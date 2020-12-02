@@ -1,6 +1,6 @@
 import express from 'express'
-import views from './routes/views'
-import apis from './routes/apis'
+import views from './router/views'
+import apis from './router/apis'
 
 
 require('dotenv').config()
