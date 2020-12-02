@@ -20,6 +20,9 @@ module.exports = {
       player2Choice: {
         type: Sequelize.STRING,
       },
+      result: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

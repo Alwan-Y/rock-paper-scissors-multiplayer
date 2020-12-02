@@ -41,6 +41,9 @@ module.exports = (sequelize, DataTypes) => {
       player2Choice: {
         type: DataTypes.STRING,
       },
+      result: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
