@@ -1,0 +1,26 @@
+
+
+body {
+    background-color: #9b835f;
+}
+
+.custom-margin-row-1 {
+    margin-top: 350px;
+}
+
+.custom-margin-row-2 {
+    margin-top: 50px;
+}
+
+.color-custom {
+    color: white;
+    background-color: #724C21;
+    width: 400px;
+    height: 60px;
+    font-size: 20pt;
+}
+
+.color-custom:hover {
+    color: #724C21;
+    background-color: white;
+}
