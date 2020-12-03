@@ -15,26 +15,18 @@ module.exports = (sequelize, DataTypes) => {
 
     static encrypt = (password) => bcrypt.hashSync(password, 8)
 
-    static register = ({
-      username,
-      password,
-      confirmPassword,
-      address,
-      gender,
-      age,
-    }) => {
+    static register = ({ username, password, confirmPassword }) => {
       if (password !== confirmPassword) {
         throw new Error('Password and Confirm Password not match')
       }
 
       const encryptedPassword = this.encrypt(password)
 
+      console.log(encryptedPassword)
+
       return this.create({
         username,
         password: encryptedPassword,
-        address,
-        gender,
-        age,
       })
     }
   }
@@ -55,18 +47,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      address: {
-        type: DataTypes.STRING,
-      },
-      gender: {
-        type: DataTypes.ENUM,
-        values: ['m', 'f'],
-      },
-      age: {
-        type: DataTypes.INTEGER,
-      },
     },
     {
+      timestamps: true,
       sequelize,
       modelName: 'User',
       tableName: 'User',

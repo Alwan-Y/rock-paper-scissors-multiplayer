@@ -13,23 +13,21 @@
 <body>
     <div class="jumbotron jumbotron-fluid custom-color">
         <div class="container">
-            <form class="margin-custom">
+            <form class="margin-custom" target="/user/register" method="POST">
                 <div class="form-group">
                     <label for="username" class="color-font">Username</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" name="username" id="username" >
                 </div>
                 <div class="form-group">
                     <label for="password" class="color-font">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" name="password"  id="password">
                 </div>
                 <div class="form-group">
                     <label for="password" class="color-font">Re-Type Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" name="confirmPassword"  id="password">
                 </div>
-                <div class="text-right">
-                    <p>
-                        <h1 class="btn color-custom buton">Create</h1>
-                    </p>
+                <div class="form-group col-md-6 offset-md-3">
+                    <input type="submit" class="btn btn-primary" />
                 </div>
             </form>
         </div>
