@@ -1,22 +1,22 @@
-import express from 'express'
-import views from './router/views'
-import apis from './router/apis'
-
-
 require('dotenv').config()
+import express from 'express'
+
+import roomRouter from './router/room'
 
 const app = express()
-app.use(express.json())
-app.use(express.static('public'))
+const port = process.env.PORT || 3000
 
 app.set('view engine', 'ejs')
 app.set('views', 'src/views')
 
-app.use('/', views)
-app.use('/apis', apis)
+app.use(express.json())
 
-const port = process.env.PORT || 3000
+app.use('/room', roomRouter)
 
-app.listen(port, () => {
-    console.log(`Server run on port : http://localhost:${port}`)
+app.get('/', (req, res) => {
+  res.send('Hallo word')
 })
+
+app.listen(port, () =>
+  console.log(`Server run on port : http://localhost:${port}'`)
+)
