@@ -1,10 +1,10 @@
-const express = require('express')
+import express from 'express'
 
-const roomController = require('../controller/room')
+import roomController from '../controller/room'
 
 const router = express.Router()
 
 router.post('/create', roomController.createRoom)
 router.get('/', roomController.getRoom)
 
-module.exports = router
+export default router
