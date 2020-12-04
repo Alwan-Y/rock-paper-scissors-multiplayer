@@ -9,15 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      const { History } = models
-
-      Room.hasMany(History, {
-        foreignKey: 'roomId',
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      })
-    }
+    static associate(models) {}
 
     static createRoom = () => {
       const id = format(crypto.randomBytes(2), 'dec')
@@ -36,32 +28,20 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         allowNull: false,
       },
-<<<<<<< HEAD
       player1Id: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       player2Id: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       player1Choice: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       player2Choice: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       result: {
         type: DataTypes.STRING,
-        allowNull: true
-=======
-      roomName: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
->>>>>>> 0476036... add History model
       },
     },
     {
