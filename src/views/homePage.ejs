@@ -1,4 +1,10 @@
 <% layout('layout/main') -%>
 <% block('title', 'Add') -%>
 
-<h1>Home</h1>
+<form class="margin-custom" target="/room/create" method="POST">
+    <h2>Create Room or Join</h2>
+  
+    <div class="form-group col-md-6 offset-md-3">
+        <button type="submit" class="btn btn-primary" >Create Room</button>
+    </div>
+</form>
