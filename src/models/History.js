@@ -3,73 +3,56 @@ const crypto = require('crypto')
 const format = require('biguint-format')
 
 module.exports = (sequelize, DataTypes) => {
-  class Room extends Model {
+  class History extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      const { History } = models
+      const { Room } = models
 
-      Room.hasMany(History, {
+      History.belongsTo(Room, {
         foreignKey: 'roomId',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       })
     }
-
-    static createRoom = () => {
-      const id = format(crypto.randomBytes(2), 'dec')
-
-      return this.create({
-        id,
-        roomName: id,
-      })
-    }
   }
-  Room.init(
+  History.init(
     {
       id: {
         primaryKey: true,
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         unique: true,
         allowNull: false,
+        defaultValue: DataTypes.UUIDV4,
       },
-<<<<<<< HEAD
       player1Id: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       player2Id: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       player1Choice: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       player2Choice: {
         type: DataTypes.STRING,
-        allowNull: true
       },
       result: {
         type: DataTypes.STRING,
-        allowNull: true
-=======
-      roomName: {
-        type: DataTypes.STRING,
-        unique: true,
+      },
+      roomId: {
+        type: DataTypes.UUID,
         allowNull: false,
->>>>>>> 0476036... add History model
       },
     },
     {
-      timestamps: true,
       sequelize,
-      modelName: 'Room',
-      tableName: 'Room',
+      modelName: 'History',
+      tableName: 'History',
     }
   )
-  return Room
+  return History
 }
