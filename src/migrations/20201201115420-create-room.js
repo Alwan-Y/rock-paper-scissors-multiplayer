@@ -8,10 +8,20 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true,
       },
-      roomName: {
+      player1Id: {
         type: Sequelize.STRING,
-        unique: true,
-        allowNull: false,
+      },
+      player2Id: {
+        type: Sequelize.STRING,
+      },
+      player1Choice: {
+        type: Sequelize.STRING,
+      },
+      player2Choice: {
+        type: Sequelize.STRING,
+      },
+      result: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
