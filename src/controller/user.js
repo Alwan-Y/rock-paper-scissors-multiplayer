@@ -1,6 +1,4 @@
-import { User } from '../models'
-import bcrypt from 'bcrypt'
-const salt = bcrypt.genSaltSync(10)
+import { User, UserBio } from '../models'
 
 class userController {
   static getRegister = (req, res) => {
@@ -8,10 +6,35 @@ class userController {
   }
 
   static postRegister = async (req, res) => {
-    const { body } = req
+    const {
+      username,
+      password,
+      confirmPassword,
+      fullName,
+      gander,
+      age,
+    } = req.body
 
     try {
-      const user = await User.register(body)
+      if (password !== confirmPassword) {
+        throw new Error('Password and Confirm Password not match')
+      }
+
+      const encryptedPassword = User.encrypt(password)
+
+      const userBody = {
+        username,
+        password: encryptedPassword,
+        UserBio: [
+          {
+            fullName,
+            gander,
+            age,
+          },
+        ],
+      }
+
+      const user = await User.create(userBody, { include: [UserBio] })
 
       res.status(200).send(user)
     } catch (err) {
@@ -22,20 +45,19 @@ class userController {
   static LoginCheck = async (req, res) => {
     const { username, password } = req.body
 
-    const findUser = await User.findOne({ where: {username} })
-
+    const findUser = await User.findOne({ where: { username } })
 
     if (!findUser) {
-      return res.status(404).json({message: 'Account Not Found'})
+      return res.status(404).json({ message: 'Account Not Found' })
     }
 
     const checkPassword = bcrypt.compareSync(password, findUser.password)
 
     if (!checkPassword) {
-      return res.status(403).json({message: 'Password invalid'})
+      return res.status(403).json({ message: 'Password invalid' })
     }
 
-    return res.status(201).json({message: 'Successfully Login'})
+    return res.status(201).json({ message: 'Successfully Login' })
   }
 }
 

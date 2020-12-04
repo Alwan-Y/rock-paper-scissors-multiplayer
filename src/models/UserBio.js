@@ -1,28 +1,25 @@
 'use strict'
 const { Model } = require('sequelize')
-
 const bcrypt = require('bcrypt')
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class UserBio extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      const { UserBio } = models
+      const { User } = models
 
-      User.hasOne(UserBio, {
+      UserBio.belongsTo(User, {
         foreignKey: 'userId',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       })
     }
-
-    static encrypt = (password) => bcrypt.hashSync(password, 8)
   }
-  User.init(
+  UserBio.init(
     {
       id: {
         primaryKey: true,
@@ -30,22 +27,28 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4,
         unique: true,
       },
-      username: {
+      fullName: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false,
       },
-      password: {
-        type: DataTypes.STRING,
+      gander: {
+        type: DataTypes.ENUM,
+        values: ['m', 'f'],
+      },
+      age: {
+        type: DataTypes.INTEGER,
+      },
+      userId: {
+        type: DataTypes.UUID,
         allowNull: false,
       },
     },
     {
-      timestamps: true,
+      timestamps: false,
       sequelize,
-      modelName: 'User',
-      tableName: 'User',
+      modelName: 'UserBio',
+      tableName: 'UserBio',
     }
   )
-  return User
+  return UserBio
 }

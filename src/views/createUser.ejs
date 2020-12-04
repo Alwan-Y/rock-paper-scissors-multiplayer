@@ -26,8 +26,24 @@
                     <label for="password" class="color-font">Re-Type Password</label>
                     <input type="password" class="form-control" name="confirmPassword" id="password">
                 </div>
+                <div class="form-group">
+                    <label for="fullname" class="color-font">Full Name</label>
+                    <input type="text" class="form-control" name="fullName"  id="fullname">
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="color-font">Gender ( m / f )</label>
+                    <select class="custom-select" name="gander" id="inputGroupSelect03" aria-label="Example select with button addon" required>
+                        <option selected>Choose...</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="color-font">Age</label>
+                    <input type="number" class="form-control" name="age" id="age">
+                </div>
                 <div class="form-group col-md-6 offset-md-3">
-                    <input type="submit" class="btn btn-primary" />
+                    <button type="submit" class="btn btn-primary" >Submit</button>
                 </div>
             </form>
         </div>
