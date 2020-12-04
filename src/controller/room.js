@@ -23,6 +23,7 @@ class roomController {
     }
   }
 
+<<<<<<< src/controller/room.js
   static getJoinRoom = (req, res) => {
     res.render('joinRoom')
   }
@@ -69,6 +70,50 @@ class roomController {
         return res.status(201).json({ message: `succes joining to room ${id}` })
       }
     } catch (err) {
+=======
+  static joinRoom = async (req, res) => {
+    try {
+      const { id } = req.params
+      const { username } = req.body
+
+      const findRoom = await Room.findOne({ where: { id } })
+      console.log(findRoom)
+
+      if (!findRoom) {
+        return res.status(404).json({ message: 'Room not found' })
+      }
+
+      const findUserId = await User.findOne({ where: { username } })
+      console.log(findUserId)
+      console.log(findUserId.id)
+
+      if (!findUserId) {
+        res.status(404).json({ message: 'User not found' })
+      }
+
+      if (findRoom.player1Id === null) {
+        const updateRoom = await Room.update(
+          {
+            player1Id: findUserId.id,
+          },
+          { where: { id } }
+        )
+
+        return res.status(201).json({ message: `succes joining to room ${id}` })
+      }
+
+      if (findRoom.player2Id === null) {
+        const updateRoom = await Room.update(
+          {
+            player2Id: findUserId.id,
+          },
+          { where: { id } }
+        )
+
+        return res.status(201).json({ message: `succes joining to room ${id}` })
+      }
+    } catch(err) {
+>>>>>>> src/controller/room.js
       return res.status(500).json(err)
     }
   }
