@@ -10,18 +10,23 @@ module.exports = {
       },
       player1Id: {
         type: Sequelize.STRING,
+        allowNull: true
       },
       player2Id: {
         type: Sequelize.STRING,
+        allowNull: true
       },
       player1Choice: {
         type: Sequelize.STRING,
+        allowNull: true
       },
       player2Choice: {
         type: Sequelize.STRING,
+        allowNull: true
       },
       result: {
         type: Sequelize.STRING,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,

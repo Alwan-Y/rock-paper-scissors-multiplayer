@@ -31,21 +31,27 @@ module.exports = (sequelize, DataTypes) => {
       },
       player1Id: {
         type: DataTypes.STRING,
+        allowNull: true
       },
       player2Id: {
         type: DataTypes.STRING,
+        allowNull: true
       },
       player1Choice: {
         type: DataTypes.STRING,
+        allowNull: true
       },
       player2Choice: {
         type: DataTypes.STRING,
+        allowNull: true
       },
       result: {
         type: DataTypes.STRING,
+        allowNull: true
       },
     },
     {
+      timestamps: true,
       sequelize,
       modelName: 'Room',
       tableName: 'Room',
