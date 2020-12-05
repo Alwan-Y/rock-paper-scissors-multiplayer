@@ -9,5 +9,5 @@ router.post('/create', roomController.postCreateRoom)
 router.get('/join', roomController.getJoinRoom)
 router.post('/join', roomController.postJoinRoom)
 router.post('/play', roomController.addPlayerOptions)
-
+router.get('/result', roomController.getResult)
 export default router
