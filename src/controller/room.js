@@ -162,6 +162,21 @@ class roomController {
           return res.status(200).json({ message:'PLAYER 2 WIN' })
       }    
   }
+
+    static resetChoice = async (req, res) => {
+      const { id } = req.body
+
+      const resetChoice = await Room.update(
+          {
+              player1Choice: null,
+              player2Choice: null,
+              result: null,
+          },
+          { where: {id} }
+          )
+
+          return res.status(200).json({ message: 'Succes reset player choice & result'})
+  }
 }
 
 export default roomController
