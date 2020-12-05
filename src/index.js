@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import roomRouter from './router/room'
 import userRouter from './router/user'
 
-import { auth, localsMiddleware } from './middleware/index'
+import { checkAuth, auth } from './middleware/index'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
-app.use(localsMiddleware)
+app.use(checkAuth)
 
 app.use('/room', roomRouter)
 app.use('/user', userRouter)

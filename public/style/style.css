@@ -111,6 +111,17 @@ label {
   overflow: hidden;
 }
 
+.home__image {
+  width: 45rem;
+  margin-left: 12rem;
+}
+
+.home__buttons {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  margin-left: 20rem;
+}
+
 .blog-heading {
   text-align: center;
   font-weight: bold;
@@ -132,10 +143,22 @@ label {
 
 .btn-primary {
   background-color: #576de6 !important;
+  border-color: #576de6 !important;
 }
 
 .btn-primary:hover {
   background-color: #2b46df !important;
+  border-color: #2b46df !important;
+}
+
+.btn-success {
+  background-color: #e5cf57 !important;
+  border-color: #e5cf57 !important;
+}
+
+.btn-success:hover {
+  background-color: #dec22b !important;
+  border-color: #dec22b !important;
 }
 
 .home__write-btn {
