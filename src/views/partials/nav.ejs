@@ -9,6 +9,11 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger navbar__links" href="/users">Dashboard</a>
           </li>
+          <% if(loggedUser) { %>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger navbar__links" href="/user/logout">Log Out</a>
+          </li>
+          <% } %>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger navbar__links" href="#">About</a>
           </li>

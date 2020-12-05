@@ -1,5 +1,4 @@
 import { User, UserBio } from '../models'
-import bcrypt from 'bcrypt'
 
 class userController {
   static getRegister = (req, res) => {
@@ -51,19 +50,14 @@ class userController {
     const { username, password } = req.body
 
     try {
-      const findUser = await User.findOne({ where: { username } })
+      const user = await User.findByCredential(username, password)
 
-      if (!findUser) {
-        return res.status(404).json({ message: 'Account Not Found' })
-      }
+      const token = await user.generateAuthToken()
 
-      const checkPassword = bcrypt.compareSync(password, findUser.password)
-
-      if (!checkPassword) {
-        return res.status(403).json({ message: 'Password invalid' })
-      }
-
-      res.status(201).json({ message: 'Successfully Login' })
+      res
+        .status(201)
+        .cookie('authToken', token, { maxAge: 360000, httpOnly: true })
+        .redirect('/home')
     } catch (err) {
       res.status(400).send(err)
     }

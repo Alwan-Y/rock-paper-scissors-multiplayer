@@ -10,17 +10,22 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sequelize": "sequelize"
+    "sequelize": "sequelize",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:refresh": "sequelize db:migrate:undo:all && yarn db:migrate"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
     "biguint-format": "^1.0.2",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "ejs-locals": "^1.0.2",
     "express": "^4.17.1",
     "express-validator": "^6.7.0",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
