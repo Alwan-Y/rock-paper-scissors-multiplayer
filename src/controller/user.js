@@ -62,6 +62,16 @@ class userController {
       res.status(400).send(err)
     }
   }
+
+  static logout = async (req, res) => {
+    const { user } = req
+
+    user.tokens = null
+
+    await user.save()
+
+    res.redirect('/user/login')
+  }
 }
 
 export default userController

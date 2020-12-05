@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { Op } from 'sequelize'
 import { User } from '../models'
 
-export const auth = async (req, res, next) => {
+export const checkAuth = async (req, res, next) => {
   const secret = process.env.SECRET
 
   try {
@@ -12,10 +12,6 @@ export const auth = async (req, res, next) => {
       where: { id: decoded.id, tokens: { [Op.contains]: [token] } },
     })
 
-    if (!user) {
-      throw new Error()
-    }
-
     req.token = token
     req.user = user
 
@@ -24,11 +20,22 @@ export const auth = async (req, res, next) => {
     next()
   } catch (err) {
     res.locals.loggedUser = null
+    next()
+  }
+}
+
+export const auth = async (req, res, next) => {
+  if (req.user) {
+    next()
+  } else {
     res.redirect('/user/login')
   }
 }
 
-export const localsMiddleware = (req, res, next) => {
-  res.locals.loggedUser = null
-  next()
+export const onlyPublic = (req, res, next) => {
+  if (req.user) {
+    res.redirect('/home')
+  } else {
+    next()
+  }
 }
