@@ -1,4 +1,4 @@
-import { Room, User } from '../models'
+import { Room } from '../models'
 
 class roomController {
   static getRoom = async (req, res) => {
@@ -41,37 +41,10 @@ class roomController {
         return res.status(404).send({ message: 'Room not found' })
       }
 
-      room.player2Id = user.username
+      room.player2Username = user.username
 
       await room.save()
 
-      // const findUserId = await User.findOne({ where: { username } })
-
-      // if (!findUserId) {
-      //   res.status(404).json({ message: 'User not found' })
-      // }
-
-      // if (findRoom.player1Id === null) {
-      //   const updateRoom = await Room.update(
-      //     {
-      //       player1Id: findUserId.id,
-      //     },
-      //     { where: { id } }
-      //   )
-
-      //   return res.status(201).json({ message: `succes joining to room ${id}` })
-      // }
-
-      // if (findRoom.player2Id === null) {
-      //   const updateRoom = await Room.update(
-      //     {
-      //       player2Id: findUserId.id,
-      //     },
-      //     { where: { id } }
-      //   )
-
-      //   return res.status(201).send({ message: `succes joining to room ${id}` })
-      // }
       res.status(200).redirect(`/room/id/${id}`)
     } catch (err) {
       res.status(400).send(err)

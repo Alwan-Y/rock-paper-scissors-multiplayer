@@ -73,6 +73,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      roleBase: {
+        type: DataTypes.STRING,
+        defaultValue: 'user',
+      },
       tokens: {
         type: DataTypes.ARRAY(DataTypes.STRING),
       },

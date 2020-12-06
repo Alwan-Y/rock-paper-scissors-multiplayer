@@ -8,10 +8,10 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true,
       },
-      player1Id: {
+      player1Username: {
         type: Sequelize.STRING,
       },
-      player2Id: {
+      player2Username: {
         type: Sequelize.STRING,
       },
       player1Choice: {

@@ -20,6 +20,10 @@ module.exports = {
       tokens: {
         type: Sequelize.ARRAY(Sequelize.STRING),
       },
+      roleBase: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

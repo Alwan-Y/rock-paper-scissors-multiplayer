@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {}
 
-    static createRoom = (player1Id) => {
+    static createRoom = (player1Username) => {
       const id = format(crypto.randomBytes(2), 'dec')
 
       return this.create({
         id,
         roomName: id,
-        player1Id,
+        player1Username,
       })
     }
   }
@@ -29,10 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         allowNull: false,
       },
-      player1Id: {
+      player1Username: {
         type: DataTypes.STRING,
       },
-      player2Id: {
+      player2Username: {
         type: DataTypes.STRING,
       },
       player1Choice: {
