@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 
 import roomRouter from './router/room'
 import userRouter from './router/user'
+import dashboardRouter from './router/dashboard'
 
 import { checkAuth, auth } from './middleware/index'
 
@@ -25,6 +26,7 @@ app.use(checkAuth)
 
 app.use('/room', roomRouter)
 app.use('/user', userRouter)
+app.use('/dashboard', dashboardRouter)
 
 app.get('/', (req, res) => {
   res.redirect('/user/login')

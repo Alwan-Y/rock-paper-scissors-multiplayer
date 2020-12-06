@@ -15,7 +15,8 @@ export const checkAuth = async (req, res, next) => {
     req.token = token
     req.user = user
 
-    res.locals.loggedUser = req.user
+    res.locals.loggedUser = req.user || null
+    res.locals.roleBase = req.user.roleBase || null
 
     next()
   } catch (err) {
