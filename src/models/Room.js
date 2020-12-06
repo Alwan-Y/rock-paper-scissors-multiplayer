@@ -11,12 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {}
 
-    static createRoom = () => {
+    static createRoom = (player1Id) => {
       const id = format(crypto.randomBytes(2), 'dec')
 
       return this.create({
         id,
         roomName: id,
+        player1Id,
       })
     }
   }
