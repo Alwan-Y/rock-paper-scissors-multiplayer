@@ -43,7 +43,7 @@ class userController {
   }
 
   static getLogin = async (req, res) => {
-    res.render('loginUser')
+    res.render('loginUser', { loginError: null })
   }
 
   static postLogin = async (req, res) => {
@@ -59,7 +59,11 @@ class userController {
         .cookie('authToken', token, { maxAge: 360000, httpOnly: true })
         .redirect('/home')
     } catch (err) {
-      res.status(400).send(err)
+      res
+        .status(400)
+        .render('loginUser', {
+          loginError: 'login Error please check username and password',
+        })
     }
   }
 
