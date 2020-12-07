@@ -1,4 +1,5 @@
 import Path from '../path/routePath'
+
 import express from 'express'
 import dashboardController from '../controller/dashboard'
 

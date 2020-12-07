@@ -1,4 +1,5 @@
 import Path from '../path/routePath'
+
 import express from 'express'
 import userController from '../controller/user'
 import { auth, onlyPublic } from '../middleware'

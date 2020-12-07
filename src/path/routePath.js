@@ -11,6 +11,7 @@ class Path {
     static register = '/register'
     static login = '/login'
     static logout = '/logout'
+    
 }
 
 export default Path

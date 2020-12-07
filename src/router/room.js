@@ -1,4 +1,5 @@
 import Path from '../path/routePath'
+
 import express from 'express'
 import roomController from '../controller/room'
 import { auth } from '../middleware'
