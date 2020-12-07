@@ -59,11 +59,9 @@ class userController {
         .cookie('authToken', token, { maxAge: 360000, httpOnly: true })
         .redirect('/home')
     } catch (err) {
-      res
-        .status(400)
-        .render('loginUser', {
-          loginError: 'login Error please check username and password',
-        })
+      res.status(400).render('loginUser', {
+        loginError: 'login Error please check username and password',
+      })
     }
   }
 
