@@ -26,7 +26,7 @@ class roomController {
   }
 
   static getJoinRoom = (req, res) => {
-    res.render('joinRoom')
+    res.render('joinRoom', { joinError: null })
   }
 
   static postJoinRoom = async (req, res) => {
@@ -37,17 +37,13 @@ class roomController {
 
       const room = await Room.findOne({ where: { id } })
 
-      if (!room) {
-        return res.status(404).send({ message: 'Room not found' })
-      }
-
       room.player2Username = user.username
 
       await room.save()
 
       res.status(200).redirect(`/room/id/${id}`)
     } catch (err) {
-      res.status(400).send(err)
+      res.status(400).render('joinRoom', { joinError: 'room not found' })
     }
   }
 

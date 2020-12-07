@@ -1,7 +1,7 @@
 <% layout('layout/main') -%>
 <% block('title', 'Login') -%>
 
-<form class="margin-custom" action="/user/login" method="POST">
+<form class="margin-custom mb-5" action="/user/login" method="POST">
         <% if(loginError) { %>
                 <div class="alert alert-danger col-md-6  offset-md-3" role="alert">
                         <%= loginError %>
@@ -15,7 +15,12 @@
                 <label for="password" class="color-font">Password</label>
                 <input type="password" class="form-control" name="password" id="password">
         </div>
-        <div class="form-group  col-md-6 offset-md-3">
-                <button type="submit" class="btn btn-primary">Login</button>
-        </div>
+        <div class="row ml-1">
+                <div class="form-group col-md-3 offset-md-3 ">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="form-group col-md-3  ">
+                    <p>Don't have account <a href="/user/register">Register</a></p>
+                </div>
+            </div>
 </form>
