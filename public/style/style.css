@@ -122,6 +122,12 @@ label {
   margin-left: 15rem;
 }
 
+.room__container {
+  background-color: #c6d0ff;
+  color: #2e2e2e;
+  margin-bottom: 5rem;
+}
+
 .blog-heading {
   text-align: center;
   font-weight: bold;

@@ -1,6 +1,50 @@
 <% layout('layout/main') -%>
 <% block('title', 'Room') -%>
 
-<h2>Room : <%= room.id %></h2>
-<h2>Player1 : <%= room.player1Username %></h2>
-<h2>Player2 : <%= room.player2Username %></h2>
+<div class="room__container container">
+    <h2>Room : <%= room.id %></h2>
+    <div class="row mt-4">
+        <h5 class="col-md-6">Player 1 : <%= room.player1Username %></h5>
+        <h5 class="col-md-3 offset-md-3 ">Player 2 : <%= room.player2Username %></h5>
+    </div>
+    <div class="row">
+        <h5 class="col-md-6">Player 1 Choice : <%= room.player1Choice %></h5>
+        <h5 class="col-md-3 offset-md-3 ">Player 2 Choice : <%= room.player2Choice %></h5>
+    </div>
+ 
+    <% if(!room.player1Choice  || !room.player2Choice ) { %>
+        <div class="row mt-5">
+            <div class="col-3"></div>
+            <div class=" col-6 row">
+                <form class="margin-custom col-md" action="/room/choice/<%= room.id %>/rock" method="POST">
+                    <div class="form-grops">
+                        <button type="submit" class="btn btn-primary" >Rook</button>
+                    </div>
+                </form>
+                <form class="margin-custom col-md " action="/room/choice/<%= room.id %>/paper" method="POST">
+                    <div class="form-grops">
+                        <button type="submit" class="btn btn-primary" >Paper</button>
+                    </div>
+                </form>
+                <form class="margin-custom col-md " action="/room/choice/<%= room.id %>/scissor" method="POST">
+                    <div class="form-grops">
+                        <button type="submit" class="btn btn-primary" >Scissor</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    <%  } %>
+
+    <% if(room.result ) { %>
+        <div class="row mt-5">
+            <div class="col-3"></div>
+            <div class=" col-6 row">
+               <h1>Result : <%= room.result %> </h1>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    <%  } %>
+
+
+</div>
