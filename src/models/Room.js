@@ -1,7 +1,6 @@
 const { Model } = require('sequelize')
 const crypto = require('crypto')
 const format = require('biguint-format')
-const { log } = require('console')
 
 module.exports = (sequelize, DataTypes) => {
   class Room extends Model {
@@ -28,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
 
       if (player1Choice && player2Choice && player1Choice === player2Choice) {
         room.result = 'Draw'
-        await room.save()
       }
 
       if (player1Choice && player2Choice && player1Choice === 'rock') {
@@ -37,15 +35,17 @@ module.exports = (sequelize, DataTypes) => {
           : (room.result = 'Player 2 Win')
       }
 
-      if (player1Choice && player2Choice && player1Choice === 'scissor')
+      if (player1Choice && player2Choice && player1Choice === 'scissor') {
         player2Choice === 'rock'
           ? (room.result = 'Player 2 Win')
           : (room.result = 'Player 1 Win')
+      }
 
-      if (player1Choice === 'paper')
+      if (player1Choice && player2Choice && player1Choice === 'paper') {
         player2Choice === 'scissor'
           ? (room.result = 'Player 2 Win')
           : (room.result = 'Player 1 Win')
+      }
 
       await room.save()
     }
