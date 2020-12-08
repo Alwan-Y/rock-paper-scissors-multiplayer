@@ -12,7 +12,6 @@ export const checkAuth = async (req, res, next) => {
       where: { id: decoded.id, tokens: { [Op.contains]: [token] } },
     })
 
-    req.token = token
     req.user = user
 
     res.locals.loggedUser = req.user || null
