@@ -3,11 +3,11 @@
 
 <div class="room__container container">
     <h2>Room : <%= room.id %></h2>
-    <div class="row mt-4">
+    <div class="row mt-4 text-muted">
         <h5 class="col-md-6">Player 1 : <%= room.player1Username %></h5>
         <h5 class="col-md-3 offset-md-3 ">Player 2 : <%= room.player2Username %></h5>
     </div>
-    <div class="row">
+    <div class="row text-muted">
         <h5 class="col-md-6">
             Player 1 Choice : 
             <% if(!room.player1Choice  || !room.player2Choice ) { %>
@@ -29,22 +29,22 @@
     </div>
  
     <% if(!room.player1Choice  || !room.player2Choice ) { %>
-        <div class="row mt-5">
+        <div class="row  room__choice">
             <div class="col-3"></div>
             <div class=" col-6 row">
                 <form class="margin-custom col-md" action="/room/choice/<%= room.id %>/rock" method="POST">
                     <div class="form-grops">
-                        <button type="submit" class="btn btn-primary" >Rook</button>
+                        <button type="submit" class="btn room_btn rock" ></button>
                     </div>
                 </form>
                 <form class="margin-custom col-md " action="/room/choice/<%= room.id %>/paper" method="POST">
                     <div class="form-grops">
-                        <button type="submit" class="btn btn-primary" >Paper</button>
+                        <button type="submit" class="btn room_btn paper" ></button>
                     </div>
                 </form>
                 <form class="margin-custom col-md  " action="/room/choice/<%= room.id %>/scissor" method="POST">
                     <div class="form-grops">
-                        <button type="submit" class="btn btn-primary" >Scissor</button>
+                        <button type="submit" class="btn room_btn scissro" ></button>
                     </div>
                 </form>
             </div>
@@ -53,10 +53,10 @@
     <%  } %>
 
     <% if(room.result ) { %>
-        <div class="row mt-5">
+        <div class="row  ml-5 room__result">
             <div class="col-4"></div>
             <div class=" col-6 ">
-               <h1>Result : <%= room.result %> </h1>
+               <h1><%= room.result %> </h1>
             </div>
             <div class="col-2"></div>
         </div>
