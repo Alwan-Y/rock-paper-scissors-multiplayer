@@ -9,7 +9,6 @@ router.get('/id/:id', roomController.getRoom)
 router.post('/create', auth, roomController.postCreateRoom)
 router.get('/join', roomController.getJoinRoom)
 router.post('/join', roomController.postJoinRoom)
-router.post('/reset-room', roomController.resetChoice)
 router.post('/join', auth, roomController.postJoinRoom)
 router.post('/choice/:id/:choice', auth, roomController.postChoice)
 
