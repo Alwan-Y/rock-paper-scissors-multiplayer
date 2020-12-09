@@ -31,13 +31,17 @@ module.exports = (sequelize, DataTypes) => {
         throw new Error('Unable to Login')
       }
 
-      const isMatch = await bcrypt.compareSync(password, user.password)
+      try {
+        const isMatch = await bcrypt.compareSync(password, user.password)
 
-      if (!isMatch) {
-        throw new Error('Unable to Login')
+        if (!isMatch) {
+          throw new Error('Unable to Login')
+        }
+
+        return user
+      } catch (err) {
+        return err
       }
-
-      return user
     }
 
     generateAuthToken = async function () {
@@ -46,14 +50,22 @@ module.exports = (sequelize, DataTypes) => {
 
       const token = jwt.sign({ id: user.id }, secret, { expiresIn: 360000 })
 
-      await user.update(
-        {
-          tokens: sequelize.fn('array_append', sequelize.col('tokens'), token),
-        },
-        { where: { id: user.ud } }
-      )
+      try {
+        await user.update(
+          {
+            tokens: sequelize.fn(
+              'array_append',
+              sequelize.col('tokens'),
+              token
+            ),
+          },
+          { where: { id: user.ud } }
+        )
 
-      return token
+        return token
+      } catch (err) {
+        return err
+      }
     }
   }
   User.init(

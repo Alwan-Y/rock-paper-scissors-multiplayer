@@ -6,7 +6,7 @@ class roomController {
 
     try {
       const room = await Room.findOne({ where: { id } })
-      room.getResult()
+      await room.getResult()
 
       res.status(200).render('room', { room })
     } catch (err) {
@@ -59,35 +59,17 @@ class roomController {
 
       if (user.username === room.player1Username && !room.player1Choice) {
         room.player1Choice = choice
-        await room.save()
       }
 
       if (user.username === room.player2Username && !room.player2Choice) {
         room.player2Choice = choice
-        await room.save()
       }
 
-      res.redirect(`/room/id/${id}`).isChoice = true
+      await room.save()
+      res.redirect(`/room/id/${id}`)
     } catch (err) {
       res.status(400).send(err)
     }
-  }
-
-  static resetChoice = async (req, res) => {
-    const { id } = req.body
-
-    const resetChoice = await Room.update(
-      {
-        player1Choice: null,
-        player2Choice: null,
-        result: null,
-      },
-      { where: { id } }
-    )
-
-    return res
-      .status(200)
-      .json({ message: 'Succes reset player choice & result' })
   }
 }
 
