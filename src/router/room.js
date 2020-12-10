@@ -6,7 +6,6 @@ import { auth } from '../middleware'
 
 const router = express.Router()
 
-
 router.get(PATH.GET_ROOM, roomController.getRoom)
 router.post(PATH.CREATE_ROOM, auth, roomController.postCreateRoom)
 router.get(PATH.JOIN, roomController.getJoinRoom)
