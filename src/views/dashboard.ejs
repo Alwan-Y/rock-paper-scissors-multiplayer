@@ -1,4 +1,88 @@
 <% layout('layout/main') -%>
 <% block('title', 'Register') -%>
 
-<h1>Dashboard</h1>
+<div class="container">
+    <h4 class="margin-custom-1 margin-custom">User_Game</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="listUserGame">
+            <tr>
+                <th>161613216516161</th>
+                <td>Testing</td>
+                <td>Testing</td>
+                <td>
+                    <p class="text-center mt-3"><button id="${user.id}" type="button"
+                            class="btn btn-danger button-delete-3" id="">Hapus</button></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="http://localhost:3000/createUser"
+        class="btn btn-warning main-btn text-center text-uppercase font-weight-bold color-custom text-center">Create
+        New User</a>
+
+    <h4 class="margin-custom">User_Game_Biodata</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Addres</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+                <th scope="col">UserGameId</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="listUserBiodata">
+            <tr>
+                <th>161613216516162</th>
+                <td>Testing</td>
+                <td>Testing</td>
+                <td>m</td>
+                <td>20</td>
+                <td>161613216516161</td>
+                <td>
+                    <p class="text-center mt-3"><button id="${biodata.id}" type="button"
+                            class="btn btn-danger button-delete-2" id="">Hapus</button></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 class="margin-custom">User_Game_History</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Player Choice</th>
+                <th scope="col">Computer Choice</th>
+                <th scope="col">Result</th>
+                <th scope="col">UserGameId</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="listUserHistory">
+            <tr>
+                <th>161613216516163</th>
+                <td>Testing</td>
+                <td>Rock</td>
+                <td>Rock</td>
+                <td>Result</td>
+                <td>161613216516161</td>
+                <td>
+                    <p class="text-center mt-3"><button id="${history.id}" type="button"
+                            class="btn btn-danger button-delete" id="">Hapus</button></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

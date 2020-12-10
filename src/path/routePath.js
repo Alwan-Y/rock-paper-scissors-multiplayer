@@ -1,17 +1,17 @@
-class Path {
-    static dashboard = '/'
+export const PATH =  {
+    DASHBOARD: '/',
 
-    static getRoom = '/id/:id'
-    static createRoom = '/create'
-    static Join = '/join'
-    static play = '/play'
-    static result = '/result'
-    static resetRoom = '/reset-room'
+    GET_ROOM: '/id/:id',
+    CREATE_ROOM: '/create',
+    JOIN: '/join',
+    PLAY: '/play',
+    CHOICE: '/choice/:id/:choice',
+    RESULT: '/result',
+    RESET_ROOM: '/reset-room',
 
-    static register = '/register'
-    static login = '/login'
-    static logout = '/logout'
-    
+    REGISTER: '/register',
+    LOGIN: '/login',
+    LOGOUT: '/logout',
 }
 
-export default Path
+export default PATH

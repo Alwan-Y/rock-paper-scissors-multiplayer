@@ -1,4 +1,4 @@
-import Path from '../path/routePath'
+import PATH from '../path/routePath'
 
 import express from 'express'
 import roomController from '../controller/room'
@@ -6,13 +6,13 @@ import { auth } from '../middleware'
 
 const router = express.Router()
 
-router.get(Path.getRoom, roomController.getRoom)
-router.post(Path.createRoom, auth, roomController.postCreateRoom)
-router.get(Path.Join, roomController.getJoinRoom)
-router.post(Path.Join, roomController.postJoinRoom)
-router.post(Path.play, roomController.addPlayerOptions)
-router.get(Path.result, roomController.getResult)
-router.post(Path.resetRoom, roomController.resetChoice)
-router.post(Path.Join, auth, roomController.postJoinRoom)
+
+router.get(PATH.GET_ROOM, roomController.getRoom)
+router.post(PATH.CREATE_ROOM, auth, roomController.postCreateRoom)
+router.get(PATH.JOIN, roomController.getJoinRoom)
+router.post(PATH.JOIN, roomController.postJoinRoom)
+router.post(PATH.JOIN, auth, roomController.postJoinRoom)
+router.post(PATH.CHOICE, auth, roomController.postChoice)
+
 
 export default router

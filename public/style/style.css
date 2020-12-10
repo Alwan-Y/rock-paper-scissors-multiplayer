@@ -122,6 +122,24 @@ label {
   margin-left: 15rem;
 }
 
+.room__container {
+  background-color: #fffef9;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #2e2e2e;
+  margin: 5rem 0;
+  height: 30rem;
+  box-shadow: 5px 2px 33px -14px #2e2e2e;
+}
+
+.room__choice {
+  margin-top: 6rem;
+}
+
+.room__result {
+  margin-top: 7.8rem;
+}
+
 .blog-heading {
   text-align: center;
   font-weight: bold;
@@ -131,14 +149,6 @@ label {
 .blog-sub-heading {
   text-align: center;
   font-size: 2rem;
-}
-
-.card {
-  box-shadow: 2px 6px 16px 3px #e4e4e7;
-}
-
-.card-text {
-  overflow: hidden;
 }
 
 .btn-primary {
@@ -159,6 +169,27 @@ label {
 .btn-success:hover {
   background-color: #dec22b !important;
   border-color: #dec22b !important;
+}
+
+.room_btn {
+  background-color: none !important;
+  width: 9rem;
+  height: 9rem;
+}
+
+.rock {
+  background-image: url('/image/batu.png');
+  background-repeat: no-repeat;
+}
+
+.paper {
+  background-image: url('/image/kertas.png');
+  background-repeat: no-repeat;
+}
+
+.scissro {
+  background-image: url('/image/gunting.png');
+  background-repeat: no-repeat;
 }
 
 .home__write-btn {
@@ -331,4 +362,29 @@ label {
     margin-right: 0;
     font-weight: 600;
   }
+}
+
+.margin-custom-1 {
+  margin-top: 50px;
+}
+
+.margin-custom {
+  margin-top: 100px;
+  color: #212145;
+}
+
+.color-custom {
+  color: white;
+  background-color:#212145;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+td,th{
+  color: white;
+  background-color:#212145;
+}
+
+h4 {
+  color: white;
 }
