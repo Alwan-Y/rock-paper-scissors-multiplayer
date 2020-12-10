@@ -363,3 +363,28 @@ label {
     font-weight: 600;
   }
 }
+
+.margin-custom-1 {
+  margin-top: 50px;
+}
+
+.margin-custom {
+  margin-top: 100px;
+  color: #212145;
+}
+
+.color-custom {
+  color: white;
+  background-color:#212145;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+td,th{
+  color: white;
+  background-color:#212145;
+}
+
+h4 {
+  color: white;
+}

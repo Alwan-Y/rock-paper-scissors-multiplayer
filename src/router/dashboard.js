@@ -1,9 +1,10 @@
-import express from 'express'
+import PATH from '../path/routePath'
 
+import express from 'express'
 import dashboardController from '../controller/dashboard'
 
 const router = express.Router()
 
-router.get('/', dashboardController.getDashboard)
+router.get(PATH.DASHBOARD, dashboardController.getDashboard)
 
 export default router
