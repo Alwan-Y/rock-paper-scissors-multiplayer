@@ -36,9 +36,9 @@ class dashboardController {
     try {
       const { id } = req.params
 
-      const findHistory = await User.findOne({ where: { id } })
+      const findUser = await User.findOne({ where: { id } })
 
-      if (!findHistory) {
+      if (!findUser) {
         return res.status(404).json({ message: 'User not found' })
       }
 
@@ -81,6 +81,37 @@ class dashboardController {
       const deleted = await Room.destroy({ where: { id } })
 
       res.status(200).json({ message: 'Deleted Room' })
+    } catch (error) {
+      res.status(500).json({ message: 'Internal Server Error' })
+    }
+  }
+
+  static updateRoleBase = async (req, res) => {
+    try {
+      const { id } = req.params
+
+      const findUser = await User.findOne({ where: { id } })
+
+      if (!findUser) {
+        return res.status(404).json({ message: 'User not found' })
+      }
+
+      if (findUser && findUser.roleBase === 'user') {
+        const updateUser = await User.update({
+          roleBase: 'admin',
+        }, { where: { id }})
+
+        return res.status(200).json({ message: 'Succes promote to admin' })
+      }
+
+      if (findUser && findUser.roleBase === 'admin') {
+        const updateUser = await User.update({
+          roleBase: 'user',
+        }, { where: { id }})
+
+        return res.status(200).json({ message: 'Succes promote to user' })
+      }
+
     } catch (error) {
       res.status(500).json({ message: 'Internal Server Error' })
     }
