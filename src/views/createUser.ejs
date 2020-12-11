@@ -2,6 +2,11 @@
 <% block('title', 'Register') -%>
 
 <form class="margin-custom" target="/user/register" method="POST">
+    <% if(registerError) { %>
+        <div class="alert alert-danger col-md-6  offset-md-3" role="alert">
+                <%= registerError %>
+        </div>
+    <% } %>
     <div class="form-group col-md-6 offset-md-3">
         <label for="username" class="color-font">Username</label>
         <input type="text" class="form-control" name="username" id="username">
