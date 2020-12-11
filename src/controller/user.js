@@ -2,7 +2,7 @@ import { User, UserBio } from '../models'
 
 class userController {
   static getRegister = (req, res) => {
-    res.render('createUser')
+    res.render('createUser', { registerError: null })
   }
 
   static postRegister = async (req, res) => {
@@ -38,7 +38,11 @@ class userController {
 
       res.status(200).redirect('/user/login')
     } catch (err) {
-      res.status(400).send(err)
+      res
+        .status(400)
+        .render('createUser', {
+          registerError: 'Register Error please check password',
+        })
     }
   }
 
