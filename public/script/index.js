@@ -1,7 +1,23 @@
-console.log('okeee')
 const listUser = document.querySelector('#listUserGame')
 const listBiodata = document.querySelector('#listUserBiodata')
 const listHistory = document.querySelector('#listUserHistory')
+
+updateRoleBase = (userId) => {
+    const xhr = new XMLHttpRequest();
+    
+    xhr.onload = function() {
+        getAllUser()
+        getAllBiodata()
+        getAllHistory()
+    }
+    
+    xhr.onerror = function() {
+        alert('Internal server error')
+    }
+    
+    xhr.open("PATCH", `http://localhost:3000/dashboard/update-user/${userId}`);
+    xhr.send();
+}
 
 removeUser = (userId) => {
     const xhr = new XMLHttpRequest();
@@ -75,12 +91,22 @@ const renderAllUser = (user) => {
         <tr>
             <th>${user.id}</th>
             <td>${user.username}</td>
-            <td>${user.password}</td>
             <td>${user.roleBase}</td>
+            <td><p class="text-center mt-3"><button id="${user.id}" type="button" class="btn btn-info button-update"
+            id="">Promote/Demote</button></p></td>
             <td><p class="text-center mt-3"><button id="${user.id}" type="button" class="btn btn-danger button-delete-3"
             id="">Hapus</button></p></td>
         </tr>
         `
+    })
+    const btnUpdate = document.querySelectorAll('.button-update')
+    btnUpdate.forEach((update) => {
+        update.addEventListener('click', (event) => {
+            const userId = event.target.id
+            updateRoleBase(userId)
+            // console.log('okeee')
+            // console.log(userId)
+        })
     })
     const btnDelete = document.querySelectorAll('.button-delete-3')
     btnDelete.forEach((del) => {
