@@ -38,13 +38,23 @@ class roomController {
 
       const room = await Room.findOne({ where: { id } })
 
+      if (room.player1Username === user.username) {
+        throw new Error('you cannot join')
+      }
+
+      if (room.player2Username) {
+        throw new Error('you cannot join')
+      }
+
       room.player2Username = user.username
 
       await room.save()
 
       res.status(200).redirect(`/room/id/${id}`)
     } catch (err) {
-      res.status(400).render('joinRoom', { joinError: 'room not found' })
+      res
+        .status(400)
+        .render('joinRoom', { joinError: 'room not found or you cannot join' })
     }
   }
 
