@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import roomRouter from './router/room'
 import userRouter from './router/user'
 import dashboardRouter from './router/dashboard'
+import apiRouter from './router/api'
 
 import { checkAuth, auth } from './middleware/index'
 
@@ -19,7 +20,7 @@ app.engine('ejs', engine)
 app.set('views', 'src/views')
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use(checkAuth)
@@ -27,6 +28,7 @@ app.use(checkAuth)
 app.use('/room', roomRouter)
 app.use('/user', userRouter)
 app.use('/dashboard', dashboardRouter)
+app.use('/api', apiRouter)
 
 app.get('/', (req, res) => {
   res.redirect('/user/login')
