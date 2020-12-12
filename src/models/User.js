@@ -27,11 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     static findByCredential = async (username, password) => {
       const user = await this.findOne({ where: { username } })
 
-      if (!user) {
-        throw new Error('Unable to Login')
-      }
-
       try {
+        if (!user) {
+          throw new Error('Unable to Login')
+        }
+
         const isMatch = await bcrypt.compareSync(password, user.password)
 
         if (!isMatch) {
