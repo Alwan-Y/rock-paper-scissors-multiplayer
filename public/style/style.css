@@ -136,6 +136,10 @@ label {
   margin-top: 6rem;
 }
 
+.room_choices {
+  margin-left: 18rem;
+}
+
 .room__result {
   margin-top: 7.8rem;
 }
@@ -375,14 +379,15 @@ label {
 
 .color-custom {
   color: white;
-  background-color:#212145;
+  background-color: #212145;
   font-size: 12pt;
   font-weight: bold;
 }
 
-td,th{
+td,
+th {
   color: white;
-  background-color:#212145;
+  background-color: #212145;
 }
 
 h4 {
