@@ -32,10 +32,9 @@ class roomController {
 
   static postJoinRoom = async (req, res) => {
     const { user } = req
+    const { id } = req.body
 
     try {
-      const { id } = req.body
-
       const room = await Room.findOne({ where: { id } })
 
       if (room.player1Username === user.username) {
