@@ -1,16 +1,17 @@
 import express from 'express'
 import userController from '../../controller/api/user'
 import roomController from '../../controller/api/room'
+import PATH from '../../path/routePath'
 
 const router = express.Router()
 
-router.post('/user/register', userController.register)
-router.post('/user/login', userController.login)
-router.get('/user/logout', userController.logout)
+router.post(PATH.API_REGISTER, userController.register)
+router.post(PATH.API_LOGIN, userController.login)
+router.get(PATH.API_LOGOUT, userController.logout)
 
-router.get('/room/id/:id', roomController.getRoom)
-router.post('/room/create', roomController.postCreateRoom)
-router.post('/room/join', roomController.postJoinRoom)
-router.post('/room/choice/:id/:choice', roomController.postChoice)
+router.get(PATH.API_GET_ROOM, roomController.getRoom)
+router.post(PATH.API_CREATE_ROOM, roomController.postCreateRoom)
+router.post(PATH.API_JOIN_ROOM, roomController.postJoinRoom)
+router.post(PATH.API_POST_CHOICE, roomController.postChoice)
 
 export default router

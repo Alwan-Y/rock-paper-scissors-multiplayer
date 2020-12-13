@@ -9,65 +9,67 @@
     </div>
     <div class="row text-muted">
         <h5 class="col-md-6">
-            Player 1 Choice : 
+            Player 1 Choice :
             <% if(!room.player1Choice  || !room.player2Choice ) { %>
-                Wait...
+            Wait...
             <%  } else{ %>
-                <%= room.player1Choice %>
+            <%= room.player1Choice %>
             <%  } %>
 
-            
+
         </h5>
-        <h5 class="col-md-3 offset-md-3 ">Player 2 Choice : 
+        <h5 class="col-md-3 offset-md-3 ">Player 2 Choice :
             <% if(!room.player1Choice || !room.player2Choice ) { %>
-                Wait...
+            Wait...
             <%  } else{ %>
-                 <%= room.player2Choice %>
+            <%= room.player2Choice %>
             <%  } %>
-    
+
         </h5>
     </div>
 
-   
- 
+
+
     <% if(!room.player1Choice  || !room.player2Choice ) { %>
 
-       
 
-        <div class="row  room__choice">
-            
-            <div class="row room_choices ">
-                <form class="margin-custom col-md" action="/room/choice/<%= room.id %>/rock" method="POST">
-                    <div class="form-grops">
-                        <button type="submit" class="btn room_btn rock" onclick="alert('you successful choice')" ></button>
-                    </div>
-                </form>
-                <form class="margin-custom col-md " action="/room/choice/<%= room.id %>/paper" method="POST">
-                    <div class="form-grops">
-                        <button type="submit" class="btn room_btn paper" onclick="alert('you successful choice')"  ></button>
-                    </div>
-                </form>
-                <form class="margin-custom col-md  " action="/room/choice/<%= room.id %>/scissor" method="POST">
-                    <div class="form-grops">
-                        <button type="submit" class="btn room_btn scissro"onclick="alert('you successful choice')"  ></button>
-                    </div>
-                </form>
-            </div>
-           
+
+    <div class="row  room__choice">
+
+        <div class="row room_choices ">
+            <form class="margin-custom col-md" action="/room/choice/<%= room.id %>/rock" method="POST">
+                <div class="form-grops">
+                    <button type="submit" class="btn room_btn rock" onclick="alert('you successful choice')"></button>
+                </div>
+            </form>
+            <form class="margin-custom col-md " action="/room/choice/<%= room.id %>/paper" method="POST">
+                <div class="form-grops">
+                    <button type="submit" class="btn room_btn paper" onclick="alert('you successful choice')"></button>
+                </div>
+            </form>
+            <form class="margin-custom col-md  " action="/room/choice/<%= room.id %>/scissor" method="POST">
+                <div class="form-grops">
+                    <button type="submit" class="btn room_btn scissro"
+                        onclick="alert('you successful choice')"></button>
+                </div>
+            </form>
         </div>
-        
+
+    </div>
+
     <%  } %>
 
 
 
     <% if(room.result ) { %>
-        <div class="row  ml-5 room__result">
-            <div class="col-4"></div>
-            <div class=" col-6 ">
-               <h1><%= room.result %> </h1>
-            </div>
-            <div class="col-2"></div>
+    <div class="row  ml-5 room__result">
+        <div class="col-4"></div>
+        <div class=" col-6 ">
+            <h1><%= room.result %> </h1>
         </div>
+        <div class="col-2">
+        </div>
+    </div>
     <%  } %>
 
 

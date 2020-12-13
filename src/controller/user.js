@@ -14,7 +14,7 @@ class userController {
       gander,
       age,
     } = req.body
-
+    
     try {
       if (password !== confirmPassword) {
         throw new Error('Password and Confirm Password not match')
