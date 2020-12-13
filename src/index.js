@@ -38,6 +38,10 @@ app.get('/home', auth, (req, res) => {
   res.render('homePage')
 })
 
+app.use((req, res, next) => {
+  res.status(404).render('404')
+})
+
 app.listen(port, () =>
   console.log(`Server run on port : http://localhost:${port}'`)
 )
