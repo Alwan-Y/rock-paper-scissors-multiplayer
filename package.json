@@ -12,7 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "sequelize",
     "db:migrate": "sequelize db:migrate",
-    "db:migrate:refresh": "sequelize db:migrate:undo:all && yarn db:migrate"
+    "db:migrate:refresh": "sequelize db:migrate:undo:all && yarn db:migrate",
+    "db:setup": "yarn sequelize db:create && yarn sequelize db:migrate && yarn sequelize db:seed:all"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
